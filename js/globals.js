@@ -1,0 +1,38 @@
+"use strict";
+
+// Math
+// returns a random number between min and max
+function randomIntFromInterval(min,max)
+{
+    return Math.floor(Math.random()*(max-min+1)+min);
+}
+
+// debug and testing
+function assert(condition, message) {
+    if (!condition) {
+        message = message || "Assertion failed";
+        if (typeof Error !== "undefined") {
+            throw new Error(message);
+        }
+        throw message; // Fallback
+    }
+}
+
+function precondition(condition, message) {
+  assert(condition, message);
+}
+
+function postcondition(condition, message) {
+  assert(condition, message);
+}
+
+function listAllProperties(o) {
+	var objectToInspect;
+	var result = [];
+
+	for(objectToInspect = o; objectToInspect !== null; objectToInspect = Object.getPrototypeOf(objectToInspect)){
+      result = result.concat(Object.getOwnPropertyNames(objectToInspect));
+	}
+
+	return result;
+}
