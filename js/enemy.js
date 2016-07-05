@@ -1,3 +1,4 @@
+"use strict";
 
 
 // Enemies our player must avoid
@@ -79,13 +80,16 @@ var Enemy = function(gameBoard, x,y) {
     //-------------------------------------------------
     this.leaveGame = function() {
       this.x = this.y = undefined;
-      Enemy.decrementCountEnemiesOnBoard;
+      Enemy.decrementCountEnemiesOnBoard();
     }
 
     //-------------------------------------------------
     this.isOnGameboard = function() {
-    //  listAllProperties(Enemy.gameboard);
-      return Enemy.gameboard.isOnGameBoard(this.x, this.y);
+      var b = Enemy.gameboard.isOnGameBoard(this.x, this.y);
+      if (b == false) {
+        return false;
+      }
+      return true;
     }
     // end ams
 };
