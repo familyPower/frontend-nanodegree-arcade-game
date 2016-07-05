@@ -36,3 +36,7 @@ function listAllProperties(o) {
 
 	return result;
 }
+
+function debub_stop(message) {
+  alert("Stopped: " + message);
+}
