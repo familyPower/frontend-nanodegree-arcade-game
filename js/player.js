@@ -74,8 +74,12 @@ Player.prototype.handleInput = function(e) {
 };
 
 Player.prototype.restart = function() {
-  this.x = 2;
-  this.y = 4;
+  var x = randomIntFromInterval(GameBoard.c_PLAYER_SAFE_COLS_RANGE.firstCol,
+    GameBoard.c_PLAYER_SAFE_COLS_RANGE.lastCol);
+  var y = randomIntFromInterval(GameBoard.c_PLAYER_SAFE_ROWS_RANGE.firstRow,
+    GameBoard.c_PLAYER_SAFE_ROWS_RANGE.lastRow);
+  this.x = x;
+  this.y = y;
 };
 
 // This listens for key presses and sends the keys to your
