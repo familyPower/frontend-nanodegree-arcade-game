@@ -12,10 +12,10 @@ var gameBoard = new GameBoard();
 // place on the gameboard.
 // All Enemy must be initalized with the GameBoard.
 var allEnemies = [
-  new Enemy(gameBoard, 3, 2),
-  new Enemy(gameBoard, 0, 1),
-  new Enemy(gameBoard, 1, 3),
-  new Enemy(gameBoard)
+  new Enemy(),
+  new Enemy(),
+  new Enemy(),
+  new Enemy()
 ];
 
 // create the Player

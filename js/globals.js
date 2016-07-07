@@ -2,8 +2,7 @@
 
 // Math
 // returns a random number between min and max
-function randomIntFromInterval(min,max)
-{
+function randomIntFromInterval(min,max) {
     return Math.floor(Math.random()*(max-min+1)+min);
 }
 

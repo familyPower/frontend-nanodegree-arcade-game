@@ -25,6 +25,8 @@ GameBoard.c_CELL_WIDTH = 101;
 GameBoard.c_CELL_HEIGHT = 83;
 GameBoard.c_PLAYER_SAFE_ROWS_RANGE = {firstRow:4, lastRow:GameBoard.c_NUM_ROWS-1};
 GameBoard.c_PLAYER_SAFE_COLS_RANGE = {firstCol:0, lastCol:GameBoard.c_NUM_COLS-1};
+GameBoard.c_ENEMY_SAFE_ROWS_RANGE = {firstRow:1, lastRow:3};
+GameBoard.c_ENEMY_SAFE_COLS_RANGE = {firstCol:0, lastCol:GameBoard.c_NUM_COLS-1};
 
 GameBoard.prototype.render = function() {
   /* Loop through the number of rows and columns we've defined above

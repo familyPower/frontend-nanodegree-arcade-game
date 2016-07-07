@@ -75,7 +75,8 @@ Player.prototype.handleInput = function(e) {
 
 Player.prototype.restart = function() {
   var x = randomIntFromInterval(GameBoard.c_PLAYER_SAFE_COLS_RANGE.firstCol,
-    GameBoard.c_PLAYER_SAFE_COLS_RANGE.lastCol);
+    GameBoard.c_PLAYER_SAFE_COLS_RANGE.lastCol
+  );
   var y = randomIntFromInterval(GameBoard.c_PLAYER_SAFE_ROWS_RANGE.firstRow,
     GameBoard.c_PLAYER_SAFE_ROWS_RANGE.lastRow);
   this.x = x;

@@ -2,29 +2,23 @@
 
 
 // Enemies our player must avoid
-var Enemy = function(gameBoard, x,y) {
+var Enemy = function() {
   assert(gameBoard.constructor.name == "GameBoard");
 
   // local members
-  this.x = x;
-  this.y = y;
+  this.x = undefined;
+  this.y = undefined;
 
   // class variables and constants
   if (Enemy.gameboard == undefined) { // only set once
     Enemy.gameboard = gameBoard;
   }
   Enemy.c_MAX_ENEMY_ON_BOARD = 3;  // number of enemies allowed on the board at one time
-  Enemy.countEnemiesOnBoard = 3;  // this must equal the number of Enemy initialized
+  Enemy.countEnemiesOnBoard;  // this must equal the number of Enemy initialized
 
   // constants
   var c_MIN_SPEED = 1;
   var c_MAX_SPEED = 4;
-
-    // This value is initialized once per instantiation. It represents the
-    // number of iterations the Enemy has to wait before moving one pixel. Thus,
-    // the smaller the number the faster the object appears to move across the
-    // screen.
-    this.c_SPEED = randomIntFromInterval(c_MIN_SPEED, c_MAX_SPEED);;
 
     // Initialization function should only be executed once per instance.
     this.isInitialized = false;
@@ -38,8 +32,21 @@ var Enemy = function(gameBoard, x,y) {
 
     // initialize the enemy object. Should only be called once per instance.
     this.initialize = function() {
-      if (Enemy.isInitialized == false) {
+      if (this.isInitialized == false) {
+        if (this.shouldEnterGame()) {
+          this.x = randomIntFromInterval(GameBoard.c_ENEMY_SAFE_COLS_RANGE.firstCol,
+            GameBoard.c_ENEMY_SAFE_COLS_RANGE.lastCol);
+          this.y = randomIntFromInterval(GameBoard.c_ENEMY_SAFE_ROWS_RANGE.firstRow,
+            GameBoard.c_ENEMY_SAFE_ROWS_RANGE.lastRow);
 
+          Enemy.incrementCountEnemiesOnBoard();
+
+          // This value is initialized once per instantiation. It represents the
+          // number of iterations the Enemy has to wait before moving one pixel. Thus,
+          // the smaller the number the faster the object appears to move across the
+          // screen.
+          this.c_SPEED = randomIntFromInterval(c_MIN_SPEED, c_MAX_SPEED);;
+        }
         this.isInitialized == true;
       }
     }
@@ -49,7 +56,7 @@ var Enemy = function(gameBoard, x,y) {
     // return true iff there is space for a nother Enemy and the current
     // enemy is not already on the GameBoard.
     this.shouldStart = function() {
-      if (Enemy.countEnemiesOnBoard < Enemy.c_MAX_ENEMY_ON_BOARD && this.isOnGameboard() == false) {
+      if ((Enemy.countEnemiesOnBoard == undefined || Enemy.countEnemiesOnBoard < Enemy.c_MAX_ENEMY_ON_BOARD) && this.isOnGameboard() == false) {
         return true;
       }
       return false;
@@ -70,7 +77,7 @@ var Enemy = function(gameBoard, x,y) {
 
     //-------------------------------------------------
     this.enterGame = function() {
-      precondition(Enemy.countEnemiesOnBoard < Enemy.c_MAX_ENEMY_ON_BOARD);
+      precondition(Enemy.countEnemiesOnBoard == undefined || Enemy.countEnemiesOnBoard < Enemy.c_MAX_ENEMY_ON_BOARD);
 
       this.x = 0;
       this.y = gameBoard.getRandomRow();
@@ -85,12 +92,15 @@ var Enemy = function(gameBoard, x,y) {
 
     //-------------------------------------------------
     this.isOnGameboard = function() {
-      var b = Enemy.gameboard.isOnGameBoard(this.x, this.y);
+      var b = gameBoard.isOnGameBoard(this.x, this.y);
       if (b == false) {
         return false;
       }
       return true;
     }
+
+    // Call initialization function
+    this.initialize();
     // end ams
 };
 
