@@ -13,40 +13,30 @@ var Player = function() {
   this.sprite = 'images/char-boy.png';
 
   this.moveLeft = function() {
-    if (this.isOnGameBoard(this.x-1, this.y)) {
+    if (gameBoard.isOnGameBoard(this.x-1, this.y)) {
       this.x-=1;
     }
   }
 
   this.moveRight = function() {
-    if (this.isOnGameBoard(this.x+1, this.y)) {
+    if (gameBoard.isOnGameBoard(this.x+1, this.y)) {
       this.x+=1;
     }
 
   }
 
   this.moveUp = function() {
-    if (this.isOnGameBoard(this.x, this.y-1)) {
+    if (gameBoard.isOnGameBoard(this.x, this.y-1)) {
       this.y-=1;
     }
 
   }
 
   this.moveDown = function() {
-    if (this.isOnGameBoard(this.x, this.y+1)) {
+    if (gameBoard.isOnGameBoard(this.x, this.y+1)) {
       this.y+=1;
     }
 
-  }
-
-  this.isOnGameBoard = function(x,y) {
-    precondition(x != undefined && isNaN(x) == false && y != undefined && isNaN(y) == false);
-
-    var b = Enemy.gameboard.isOnGameBoard(x, y);
-    if (b == false) {
-      return false;
-    }
-    return true;
   }
 
 };  // End class

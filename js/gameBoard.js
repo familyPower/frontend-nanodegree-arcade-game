@@ -1,6 +1,7 @@
 "use strict";
 
 var GameBoard = function() {
+
   GameBoard.cvtDisplayCoordToGameboardCoord = function(x,y) {
     var newX = x *  GameBoard.c_CELL_WIDTH;
     var newY = y * GameBoard.c_CELL_HEIGHT;
@@ -78,6 +79,10 @@ GameBoard.prototype.collisionDetected = function (player, enemy) {
   if (false == this.isOnGameBoard(enemy.x, enemy.y) || false == this.isOnGameBoard(player.x, player.y)) {
     return false;
   }
-  //var coord = GameBoard.cvtDisplayCoordToGameboardCoord(enemy.x, enemy.y);
   return ((player.x == Math.round(enemy.x)) && (player.y == enemy.y));
+}
+
+// returns true iff game coordinate is in the water.
+GameBoard.prototype.isEntityInWater = function(coord) {
+  return coord.y == 0;
 }

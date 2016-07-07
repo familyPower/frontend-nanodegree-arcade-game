@@ -163,11 +163,17 @@ var Engine = (function(global) {
         });
 
         player.render();
+        // Check whether or not the player is in the water. This is done after
+        // after rendering so that the human play can see the game player in the
+        // water.
+        if (true == gameBoard.isEntityInWater({x:player.x, y:player.y})) {
+          player.restart();
+        }
     }
 
     function checkCollisions() {
       allEnemies.forEach(function(enemy) {
-          if(true == gameBoard.collisionDetected(player, enemy)) {
+          if(true == gameBoard.collisionDetected({x:player.x, y:player.y}, {x:enemy.x, y:enemy.y})) {
             player.restart();
           }
       });
