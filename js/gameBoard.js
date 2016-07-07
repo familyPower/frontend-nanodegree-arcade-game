@@ -1,6 +1,12 @@
 "use strict";
 
 var GameBoard = function() {
+  GameBoard.cvtDisplayCoordToGameboardCoord = function(x,y) {
+    var newX = x *  GameBoard.c_CELL_WIDTH;
+    var newY = y * GameBoard.c_CELL_HEIGHT;
+
+    return {x:newX, y:newY};
+  }
 };
 
 GameBoard.rowImages = [
@@ -64,4 +70,14 @@ GameBoard.prototype.isOnGameBoard = function(x, y) {
     return false;
   }
   return true;
+}
+
+// Test for collision between player and enemy.
+GameBoard.prototype.collisionDetected = function (player, enemy) {
+  // Verify the player and enemy are on the game board.
+  if (false == this.isOnGameBoard(enemy.x, enemy.y) || false == this.isOnGameBoard(player.x, player.y)) {
+    return false;
+  }
+  //var coord = GameBoard.cvtDisplayCoordToGameboardCoord(enemy.x, enemy.y);
+  return ((player.x == Math.round(enemy.x)) && (player.y == enemy.y));
 }

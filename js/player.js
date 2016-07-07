@@ -41,7 +41,7 @@ var Player = function() {
 
   this.isOnGameBoard = function(x,y) {
     precondition(x != undefined && isNaN(x) == false && y != undefined && isNaN(y) == false);
-    
+
     var b = Enemy.gameboard.isOnGameBoard(x, y);
     if (b == false) {
       return false;
@@ -83,6 +83,10 @@ Player.prototype.handleInput = function(e) {
   }
 };
 
+Player.prototype.restart = function() {
+  this.x = 2;
+  this.y = 4;
+};
 
 // This listens for key presses and sends the keys to your
 // Player.handleInput() method. You don't need to modify this.

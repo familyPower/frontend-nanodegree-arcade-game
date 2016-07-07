@@ -17,8 +17,8 @@ var Enemy = function(gameBoard, x,y) {
   Enemy.countEnemiesOnBoard = 3;  // this must equal the number of Enemy initialized
 
   // constants
-  var c_MIN_SPEED = 8;
-  var c_MAX_SPEED = 3;
+  var c_MIN_SPEED = 1;
+  var c_MAX_SPEED = 4;
 
     // This value is initialized once per instantiation. It represents the
     // number of iterations the Enemy has to wait before moving one pixel. Thus,
