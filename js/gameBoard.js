@@ -70,8 +70,8 @@ GameBoard.prototype.getRandomRow = function() {
 
 // Returns false if x or y is out of bounds
 GameBoard.prototype.isOnGameBoard = function(x, y) {
-  if (x == undefined || x == NaN || x < 0 || x >= GameBoard.c_NUM_COLS ||
-          y == undefined || y == NaN || y < 0 || y >= GameBoard.c_NUM_ROWS) {
+  if (x == undefined || true == isNaN(x) || x < 0 || x >= GameBoard.c_NUM_COLS ||
+          y == undefined || true == isNaN(y) || y < 0 || y >= GameBoard.c_NUM_ROWS) {
     return false;
   }
   return true;
