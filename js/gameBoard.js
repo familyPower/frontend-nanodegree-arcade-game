@@ -1,7 +1,22 @@
 "use strict";
 
+/**
+ * @file
+ *
+*/
+
+/**
+ * @class
+ * @classdesc
+  * @param: None.
+*/
 var GameBoard = function() {
 
+  /**
+   * @function
+   * @param None.
+   * @description
+  */
   GameBoard.cvtDisplayCoordToGameboardCoord = function(x,y) {
     var newX = x *  GameBoard.c_CELL_WIDTH;
     var newY = y * GameBoard.c_CELL_HEIGHT;
@@ -28,6 +43,11 @@ GameBoard.c_PLAYER_SAFE_COLS_RANGE = {firstCol:0, lastCol:GameBoard.c_NUM_COLS-1
 GameBoard.c_ENEMY_SAFE_ROWS_RANGE = {firstRow:1, lastRow:3};
 GameBoard.c_ENEMY_SAFE_COLS_RANGE = {firstCol:0, lastCol:GameBoard.c_NUM_COLS-1};
 
+/**
+ * @function
+ * @param None.
+ * @description
+*/
 GameBoard.prototype.render = function() {
   /* Loop through the number of rows and columns we've defined above
    * and, using the rowImages array, draw the correct image for that
@@ -53,10 +73,20 @@ GameBoard.prototype.render = function() {
   }
 }
 
+/**
+ * @function
+ * @param None.
+ * @description
+*/
 GameBoard.prototype.cellLocationX = function (x) {
   return x * GameBoard.c_CELL_WIDTH;
 };
 
+/**
+ * @function
+ * @param None.
+ * @description
+*/
 GameBoard.prototype.cellLocationY = function (y) {
   return y * GameBoard.c_CELL_HEIGHT - 20; // the constant 20 compensates for
                                          // the part of the image that is
@@ -64,28 +94,48 @@ GameBoard.prototype.cellLocationY = function (y) {
 
 };
 
+/**
+ * @function
+ * @param None.
+ * @description
+*/
 GameBoard.prototype.getRandomRow = function() {
   return randomIntFromInterval(1, GameBoard.c_NUM_ROWS-3);  // What row to put the new piece
 }
 
+/**
+ * @function
+ * @param None.
+ * @description
+*/
 // Returns false if x or y is out of bounds
-GameBoard.prototype.isOnGameBoard = function(x, y) {
-  if (x == undefined || true == isNaN(x) || x < 0 || x >= GameBoard.c_NUM_COLS ||
-          y == undefined || true == isNaN(y) || y < 0 || y >= GameBoard.c_NUM_ROWS) {
+GameBoard.prototype.isOnGameboard = function(x, y) {
+  if (false == isNumber(x) || x < 0 || x >= GameBoard.c_NUM_COLS ||
+          false == isNumber(y) || y < 0 || y >= GameBoard.c_NUM_ROWS) {
     return false;
   }
   return true;
 }
 
+/**
+ * @function
+ * @param None.
+ * @description
+*/
 // Test for collision between player and enemy.
 GameBoard.prototype.collisionDetected = function (player, enemy) {
   // Verify the player and enemy are on the game board.
-  if (false == this.isOnGameBoard(enemy.x, enemy.y) || false == this.isOnGameBoard(player.x, player.y)) {
+  if (false == this.isOnGameboard(enemy.x, enemy.y) || false == this.isOnGameboard(player.x, player.y)) {
     return false;
   }
   return ((player.x == Math.round(enemy.x)) && (player.y == enemy.y));
 }
 
+/**
+ * @function
+ * @param None.
+ * @description
+*/
 // returns true iff game coordinate is in the water.
 GameBoard.prototype.isEntityInWater = function(coord) {
   return coord.y == 0;

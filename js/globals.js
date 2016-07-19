@@ -6,6 +6,17 @@ function randomIntFromInterval(min,max) {
     return Math.floor(Math.random()*(max-min+1)+min);
 }
 
+function randomFloadFromInterval(min,max) {
+    return Math.random()*(max-min+1)+min;
+}
+
+function isNumber(n) {
+  if (!isNaN(parseFloat(n)) && isFinite(n)) {
+    return true;
+  };
+
+  return false;
+}
 // debug and testing
 function assert(condition, message) {
     if (!condition) {

@@ -17,6 +17,7 @@
  */
 
 var Engine = (function(global) {
+
     /* Predefine the variables we'll be using within this scope,
      * create the canvas element, grab the 2D context for that canvas
      * set the canvas elements height/width and add it to the DOM.
@@ -107,6 +108,10 @@ var Engine = (function(global) {
      * they are just drawing the entire screen over and over.
      */
     function render() {
+
+      // ***********************************************************
+      // Code moved to gameBoard.js
+      // ***********************************************************
         /* This array holds the relative URL to the image used
          * for that particular row of the game level.
          */
@@ -138,6 +143,8 @@ var Engine = (function(global) {
         //         ctx.drawImage(Resources.get(rowImages[row]), col * 101, row * 83);
         //     }
         // }
+        // END *******************************************************
+
         renderGameboard();
         renderEntities();
     }
@@ -147,7 +154,7 @@ var Engine = (function(global) {
      * gameboard in gameBoard.js.
      */
     function renderGameboard() {
-      gameBoard.render();
+      gameboard.render();
     }
 
     /* This function is called by the render function and is called on each game
@@ -165,16 +172,16 @@ var Engine = (function(global) {
         // Check whether or not the player is in the water. This is done after
         // after rendering so that the human play can see the game player in the
         // water.
-        if (true == gameBoard.isEntityInWater({x:player.x, y:player.y})) {
+        if (true == gameboard.isEntityInWater({x:player.x, y:player.y})) {
           player.restart();
         }
-        
+
         player.render();
     }
 
     function checkCollisions() {
       allEnemies.forEach(function(enemy) {
-          if(true == gameBoard.collisionDetected({x:player.x, y:player.y}, {x:enemy.x, y:enemy.y})) {
+          if(true == gameboard.collisionDetected({x:player.x, y:player.y}, {x:enemy.x, y:enemy.y})) {
             player.restart();
           }
       });
