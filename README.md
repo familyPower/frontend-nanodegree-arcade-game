@@ -7,3 +7,5 @@ For detailed instructions on how to get started, check out this [guide](https://
 
 How to Play
 ===========
+Move your player across the screen without getting caught by the nasty bugs. Make it the water to win; winning
+will restart the game.
