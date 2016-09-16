@@ -10,10 +10,12 @@
   <ul>
     <li class="dropdown">
       <a class="dropbtn" href="#">Avatar</a>
-      <div class="dropdown-content">
+      <div id="avatar-menu" class="dropdown-content">
+        <span>
         <img src="images/char-boy.png" alt="Boy" width="50" height="50">
-        <img src="images/char-cat-girl.png" alt="Boy" width="50" height="50">
-        <img src="images/char-horn-girl.png" alt="Boy" width="50" height="50">
+        <img src="images/char-cat-girl.png" alt="cat-girl" width="50" height="50">
+        <img src="images/char-horn-girl.png" alt="horn-girl" width="50" height="50">
+      </span>
       </div>
     </li>
     <li class="dropdown">
@@ -34,16 +36,22 @@
     </li>
   </ul>
 
+  <div id="gameBoardContainer">
+  </div>
 
   <div class="gameboard">
-    <script src="js/globals.js"></script>
-    <script src="js/resources.js"></script>
-    <script class="gameboard" src="js/gameBoard.js"></script>
-    <script src="js/enemy.js"></script>
-    <script src="js/player.js"></script>
-    <script src="js/app.js"></script>
-    <script src="js/engine.js"></script>
+    <canvas id="gbCanvas" width="200" height="100"">
+    </canvas>
   </div>
+
+  <script src="js/globals.js"></script>
+  <script src="js/resources.js"></script>
+  <script class="gameboard" src="js/gameBoard.js"></script>
+  <script src="js/enemy.js"></script>
+  <script src="js/player.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/engine.js"></script>
+
 </body>
 
 </html>

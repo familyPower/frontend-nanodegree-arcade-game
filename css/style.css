@@ -1,5 +1,15 @@
 .gameboard {
-  text-align: center;
+  /* text-align: center; */
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+canvas {
+  /*border: 10px inset brown;*/
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 

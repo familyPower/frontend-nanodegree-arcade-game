@@ -24,7 +24,9 @@ var Engine = (function(global) {
      */
     var doc = global.document,
         win = global.window,
-        canvas = doc.createElement('canvas'),
+        // canvas = doc.createElement('canvas'),
+        // ctx = canvas.getContext('2d'),
+        canvas = document.getElementById("gbCanvas"),
         ctx = canvas.getContext('2d'),
         lastTime;
 
@@ -180,8 +182,12 @@ var Engine = (function(global) {
     }
 
     function checkCollisions() {
+      var enemyX, enemyY;
+
       allEnemies.forEach(function(enemy) {
-          if(true == gameboard.collisionDetected({x:player.x, y:player.y}, {x:enemy.x, y:enemy.y})) {
+        enemyX = enemy.getX();
+        enemyY = enemy.getY();
+          if(true == gameboard.collisionDetected({x:player.x, y:player.y}, {x:enemy.getX(), y:enemy.getY()})) {
             player.restart();
           }
       });

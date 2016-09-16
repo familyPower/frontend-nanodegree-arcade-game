@@ -57,6 +57,10 @@ GameBoard.prototype.render = function() {
    var boardRow,
       boardCol;
 
+  // Where to start drawing images.
+  var xBase = 100;
+  var yBase = 100;
+
   for (var row = 0; row < GameBoard.c_NUM_ROWS; row++) {
       for (var col = 0; col < GameBoard.c_NUM_COLS; col++) {
           /* The drawImage function of the canvas' context element
@@ -66,6 +70,10 @@ GameBoard.prototype.render = function() {
            * so that we get the benefits of caching these images, since
            * we're using them over and over.
            */
+
+          // center the gameboard
+          // ctx.translate(xBase + (GameBoard.c_CELL_WIDTH * col), yBase +
+          //     (GameBoard.c_CELL_HEIGHT * row));
           ctx.drawImage(Resources.get(GameBoard.rowImages[row]), col *
               GameBoard.c_CELL_WIDTH, row *
               GameBoard.c_CELL_HEIGHT);

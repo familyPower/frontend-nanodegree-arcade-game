@@ -316,6 +316,14 @@ var Enemy = function() {
  * small number, less than one). The Enemy's speed is multiplied by this value
  * to determine the game distance the Enemy moved.
 */
+// Enemy.prototype.getX = function() {
+//   return _x;
+// }
+//
+// Enemy.prototype.getY = function() {
+//   return _y;
+// }
+
 Enemy.prototype.update = function(dt) {
     // You should multiply any movement by the dt parameter
     // which will ensure the game runs at the same speed for
@@ -361,6 +369,7 @@ Enemy.prototype.render = function() {
        ctx.drawImage(Resources.get(this.sprite), gameboard.cellLocationX(x),
                            gameboard.cellLocationY(y));
   }
+
 
   // ctx.drawImage(Resources.get(this.sprite), gameboard.cellLocationX(this.getX()),
   //                       gameboard.cellLocationY(this.getY()));
